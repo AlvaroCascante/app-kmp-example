@@ -4,6 +4,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.window.ComposeUIViewController
 import io.ktor.client.engine.darwin.Darwin
 import org.kskntprojects.kmp.clients.PostClient
+import org.kskntprojects.kmp.manages.BatteryManager
 import org.kskntprojects.kmp.network.createHttpBasicClient
 import org.kskntprojects.kmp.ui.App
 
@@ -17,6 +18,7 @@ fun MainViewController() = ComposeUIViewController {
                 engine = Darwin.create()
             )
             )
-        }
+        },
+        batteryManager = remember { BatteryManager() }
     )
 }
