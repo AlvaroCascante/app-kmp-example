@@ -36,6 +36,7 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import kmp_demo.composeapp.generated.resources.Res
 import kmp_demo.composeapp.generated.resources.founders
 import kmp_demo.composeapp.generated.resources.freelance_navigator
+import kmp_demo.composeapp.generated.resources.test
 import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import moe.tlaster.precompose.viewmodel.viewModel
 import org.jetbrains.compose.resources.painterResource

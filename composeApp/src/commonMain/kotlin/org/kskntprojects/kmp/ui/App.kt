@@ -35,11 +35,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kmp_demo.composeapp.generated.resources.Res
+import kmp_demo.composeapp.generated.resources.app_name
 import kmp_demo.composeapp.generated.resources.ic_fn
 import moe.tlaster.precompose.PreComposeApp
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.navigation.rememberNavigator
+import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.kskntprojects.kmp.clients.PostClient
 import org.kskntprojects.kmp.manages.BatteryManager
@@ -112,7 +115,7 @@ fun CustomTopAppBar(
         elevation = 0.dp,
         title = {
             Text(
-                text = batteryLevel.ifEmpty { "Freelance Navigator Founders" },
+                text = batteryLevel.ifEmpty { stringResource(Res.string.app_name) },
                 color = colors.itemTextColor,
                 fontSize = 20.sp,
                 textAlign = TextAlign.Start
