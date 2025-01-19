@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.3"
+agp = "8.8.0"
 android-compileSdk = "34"
 android-minSdk = "24"
 android-targetSdk = "34"
@@ -12,9 +12,12 @@ androidx-lifecycle = "2.8.4"
 androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
 compose-multiplatform = "1.7.0"
+kotlinLogging = "7.0.3"
 junit = "4.13.2"
 kotlin = "2.1.0"
 precompose = "1.5.10"
+slf4jSimple = "2.0.16"
+ktor = "2.3.12"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -31,6 +34,17 @@ androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", nam
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 moe-tlaster-precompose = { group = "moe.tlaster", name = "precompose", version.ref = "precompose" }
 moe-tlaster-viewmodel = { group = "moe.tlaster", name = "precompose-viewmodel", version.ref = "precompose" }
+kotlin-logging = {group = "io.github.oshai", name = "kotlin-logging", version.ref = "kotlinLogging"}
+
+slf4j-simple = {group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4jSimple"}
+
+ktor-client-core = {group = "io.ktor", name = "ktor-client-core", version.ref = "ktor"}
+ktor-client-okhttp = {group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor"}
+ktor-client-darwin = {group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor"}
+ktor-client-content-negotiation = {group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor"}
+ktor-client-logging = {group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor"}
+ktor-serialization-kotlinx-json = {group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor"}
+ktor-client-auth = {group = "io.ktor", name = "ktor-client-auth", version.ref = "ktor"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -38,3 +52,13 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-serialization = {id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
+
+[bundles]
+ktor = [
+    "ktor-client-auth",
+    "ktor-client-core",
+    "ktor-client-content-negotiation",
+    "ktor-client-logging",
+    "ktor-serialization-kotlinx-json",
+]

@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -33,6 +34,13 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            // Ktor
+            implementation(libs.ktor.client.okhttp)
+        }
+        nativeMain.dependencies {
+            // Ktor
+            implementation(libs.ktor.client.darwin)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -45,6 +53,13 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.moe.tlaster.precompose)
             implementation(libs.moe.tlaster.viewmodel)
+
+            // Logging
+            implementation(libs.kotlin.logging)
+            implementation(libs.slf4j.simple)
+
+            // Ktor
+            implementation(libs.bundles.ktor)
         }
     }
 }
