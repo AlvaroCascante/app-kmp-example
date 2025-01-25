@@ -36,6 +36,8 @@ import org.kskntprojects.kmp.clients.PostClient
 import org.kskntprojects.kmp.models.Post
 import org.kskntprojects.kmp.presentation.PostState
 import org.kskntprojects.kmp.presentation.PostViewModel
+import org.kskntprojects.kmp.repositories.PostRemoteDatasource
+import org.kskntprojects.kmp.repositories.PostRemoteDatasourceImpl
 import org.kskntprojects.kmp.repositories.PostRepositoryImpl
 
 
@@ -45,8 +47,9 @@ fun PostsScreen(
     postClient: PostClient,
     modifier: Modifier = Modifier
 ) {
+    val postRemoteDataSource = PostRemoteDatasourceImpl(postClient)
     val viewModel : PostViewModel = viewModel(modelClass = PostViewModel::class) {
-        PostViewModel(PostRepositoryImpl(postClient))
+        PostViewModel(PostRepositoryImpl(postRemoteDataSource))
     }
 
     val state by viewModel.state.collectAsStateWithLifecycle()

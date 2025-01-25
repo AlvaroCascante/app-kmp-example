@@ -43,6 +43,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.kskntprojects.kmp.models.Founder
 import org.kskntprojects.kmp.presentation.FounderState
 import org.kskntprojects.kmp.presentation.FounderViewModel
+import org.kskntprojects.kmp.repositories.FounderLocalDatasourceImpl
 import org.kskntprojects.kmp.repositories.FounderRepositoryImpl
 
 @Composable
@@ -55,8 +56,9 @@ fun FoundersScreen(
     val logger = KotlinLogging.logger {}
     logger.info { "FoundersApp FoundersScreen listStatus: $listStatus" }
 
+    val founderLocalDatasource = FounderLocalDatasourceImpl()
     val viewModel : FounderViewModel = viewModel (modelClass = FounderViewModel::class) {
-        FounderViewModel(FounderRepositoryImpl())
+        FounderViewModel(FounderRepositoryImpl(founderLocalDatasource))
     }
     val state by viewModel.state.collectAsStateWithLifecycle()
 
